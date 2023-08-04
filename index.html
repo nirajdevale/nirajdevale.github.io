@@ -379,7 +379,7 @@
 						<p style="text-align: justify;">Thank you for checking out my portfolio! If you're interested, have any questions, would like to collaborate or anything!! Please send me a message or reach out via email. I'm looking forward to connect with you!</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-								<form method="post" action="#">
+								<form onsubmit="sendEmail(); reset(); return false;">
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
 										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
@@ -404,25 +404,26 @@
 							</div>
 						</div>
 					
-						<form method="post" action="process_form.php">
-							<!-- Modified form fields as per the code you provided -->
-						</form>
-						<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
-    
-    $to = "nirajdevale210@gmail.com"; // Your email address
-    $subject = "New Message from Portfolio Contact Form";
-    $headers = "From: $email";
-
-    // Send the email
-    mail($to, $subject, $message, $headers);
-}
-?>
-
-					</section>
+						<script src="https://smtpjs.com/v3/smtp.js"></script>
+						<script>
+							function sendEmail(){
+								Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "nirajdevale210@gmail.com",
+    Password : "CB2E63F85F29BE3855067B0102D44E7D8E15",
+    To : 'nirajdevale210@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "New contact form enquiry",
+    Body : "Name:" + document.getElementById("name").value
+	        +"<br> Email:" + document.getElementById("email").value
+			+"<br> Message:" + document.getElementById("message").value
+}).then(
+  message => alert("message sent successfully")
+);
+							}
+						</script>
+						</section>
+						
 					
 
 				<!-- Four -->
