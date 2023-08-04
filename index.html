@@ -405,6 +405,30 @@
 						</div>
 					</section>
 
+					<section id="four">
+						<!-- ... Your existing code ... -->
+					
+						<form method="post" action="process_form.php">
+							<!-- Modified form fields as per the code you provided -->
+						</form>
+						<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $message = $_POST["message"];
+    
+    $to = "nirajdevale210@gmail.com"; // Your email address
+    $subject = "New Message from Portfolio Contact Form";
+    $headers = "From: $email";
+
+    // Send the email
+    mail($to, $subject, $message, $headers);
+}
+?>
+
+					</section>
+					
+
 				<!-- Four -->
 				<!--
 					<section id="four">
